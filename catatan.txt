@@ -115,3 +115,12 @@ void getdataFromAPI() async {
       ),
     )
     .toList(),
+
+
+GIT
+Buka Command / terminal
+- git log --oneline       << untuk liat history commit
+- untuk kembali ke codding sebelumnya ambil kode commit 
+- git checkout 8c090da     << 8c090da >> kode commit
+- git checkout master
+
