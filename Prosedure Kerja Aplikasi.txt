@@ -1,0 +1,33 @@
+Proses Update apk
+Proses ini dilakukan saat pertama kali load aplikasi dan tampil pada layar login
+ada 2 type update Versi
+1. Mandatory Update << Aplikasi harus di update
+2. Minority update  << Terdapat perbaikan Bak pada Aplikasi namun masih bisa SKIP
+Prosedur kerja update Versi 
+0. Packing File APK kemudian Copy ke server API
+   >> setting Permission File APK diserver API agar bisa di Read & Write
+1. APK diambil dari http://api.fabindo.com/fanmobs << harus hurup kecil semua
+2. http://api.fabindo.com/fanmobs >> ada di server 192.168.2.190
+3. Data APK ditaro di server API dengan IP 192.168.2.190
+   Server API memiliki IP Public yang menumpang pada web fabindo.com dengan :
+   cpanel : https://vip.maxindo.net.id:2083/
+   user : admfabindo
+   pass : 20120703
+   Buka Menu Zone Editor kemudian edit fabindo.com dengan mengkli Manage Zone
+   pada Manage Zone kita dapat melihat ip publik api.fabindo.com : 103.235.33.222
+4. link apk di server api 
+   /opt/lampp/htdocs/fanboapi/apk/   
+5. Cara kerja :
+   >> taro apk baru di server api 
+    INSERT pada table `app_version` dengan ketentuan seperti dibawah ini :
+    `version` = '1.0.2',
+    `block` = 0, -- 0 jika minor 1 jika mandatory
+    `user_created`='Hardian',
+    `is_active`=1,
+    `title`='Perbaikan Sales', -- judul perbaikan pada menu / tab /widget
+    `note`='Penjelasan perbaikan update'
+
+ini script real :
+INSERT INTO `app_version` (`version`,`block`,`user_created`,`is_active`,`title`,`note`)
+VALUES('1.0.2',0,12,1,'Perbaikan Sales','Penjelasan perbaikan update')
+
