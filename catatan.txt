@@ -55,6 +55,14 @@ decoration: BoxDecoration(
   ],
 ),
 
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                    color: Colors.grey, width: 1, style: BorderStyle.solid),
+              ),
+            ),
+
 
 void getdataFromAPI() async {
     // alamaturl +
