@@ -46,8 +46,8 @@ class _LoginPageState extends State<LoginPage> {
     // txtpass =  TextEditingController(text: 'Fabindo1');
     // txtuser = TextEditingController(text: 'howard.lityo');
     // txtpass = TextEditingController(text: 'Fabindo1');
-    txtuser = TextEditingController(text: 'hardian');
-    txtpass = TextEditingController(text: 'itm');
+    // txtuser = TextEditingController(text: 'hardian');
+    // txtpass = TextEditingController(text: 'itm');
     
     _checkVersion();
 
@@ -389,6 +389,7 @@ class _LoginPageState extends State<LoginPage> {
       showAlert(context, "Warning Message", "Password Masih Belum di Input");
       exit(context);
     }
+
     // print(alamaturl);
     // print (url, body: {"username": txtuser.text, "password": txtpass.text});
 
@@ -437,9 +438,7 @@ class _LoginPageState extends State<LoginPage> {
       
       // ignore: dead_code
       showAlert(context, "MESSAGE", "Login Fail !!" + "\n" + "Periksa User Password dan Koneksi Jaringan Anda"  );
-
     }
-
     return 'Sukses';
   }
 
