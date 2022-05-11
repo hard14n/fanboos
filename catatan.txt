@@ -55,6 +55,14 @@ decoration: BoxDecoration(
   ],
 ),
 
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                    color: Colors.grey, width: 1, style: BorderStyle.solid),
+              ),
+            ),
+
 
 void getdataFromAPI() async {
     // alamaturl +
@@ -104,8 +112,6 @@ void getdataFromAPI() async {
     }
   }
 
-
-
   children: dtArray
     .map(
       (e) => Container(
@@ -123,4 +129,15 @@ Buka Command / terminal
 - untuk kembali ke codding sebelumnya ambil kode commit 
 - git checkout 8c090da     << 8c090da >> kode commit
 - git checkout master
+
+git branch  >> untuk melihat folder development / list branch
+git checkout master   >> untuk pindah ke branck lain >> git merge feature/quickview
+untuk bikin branch >>  git checkout -b feature/quickview
+
+untuk menggabungkan kodingan ke branch master 
+harus aktif di branch master dulu kemudian :  git merge feature/quickview
+
+untuk komit hasil koding masukan dulu ke stage 
+git add . (atau masukan nama file)
+untuk commitnya masukan perintah : git commit -m "Judul message"
 
