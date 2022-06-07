@@ -1,11 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names, avoid_unnecessary_containers, sized_box_for_whitespace, constant_identifier_names, unnecessary_new, unused_import, avoid_print
 
 import 'package:fanboos/Controller/login_page.dart';
-import 'package:fanboos/Controller/mainpage/alertScreen.dart';
+// import 'package:fanboos/Controller/mainpage/alertScreen.dart';
 import 'package:fanboos/Controller/mainpage/berita.dart';
 import 'package:fanboos/Controller/mainpage/drawerEndScreen.dart';
 import 'package:fanboos/Controller/mainpage/drawerScreen.dart';
 import 'package:fanboos/Controller/mainpage/homeScreen.dart';
+import 'package:fanboos/Controller/mainpage/profile.dart';
 import 'package:fanboos/Model/constants.dart';
 import 'package:fanboos/Systems/no_internet.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,6 @@ import 'package:provider/provider.dart';
 class MenuUtama extends StatefulWidget {
   // ignore: non_constant_identifier_names
   static const String TAG = '/MenuUtama';
-
   const MenuUtama({Key? key}) : super(key: key);
 
   @override
@@ -30,7 +30,7 @@ class _MenuUtamaState extends State<MenuUtama> {
   final List<Widget> _widgetOption = [
     BeritaScreen(),
     HomeScreen(),
-    AlertScreen()
+    ProfileScreen()
   ];
 
   void _onItemTab(int index) {
@@ -59,19 +59,11 @@ class _MenuUtamaState extends State<MenuUtama> {
       },
       home: Scaffold(
         drawer: DrawerScreen(),
-        endDrawer: DrawerEndScreen(),
+        // endDrawer: DrawerEndScreen(),
         appBar: AppBar(
           centerTitle: true,
           title: Text(companyName),
           backgroundColor: kPrimaryColor,
-          actions: [
-            Builder(builder: (context) {
-              return IconButton(
-                icon: Icon(Icons.people),
-                onPressed: () => Scaffold.of(context).openEndDrawer(),
-              );
-            }),
-          ],
         ),
         body: Consumer<ConnectivityProvider>(builder: (context, model, child) {
           // ignore: unnecessary_null_comparison
@@ -109,7 +101,7 @@ class _MenuUtamaState extends State<MenuUtama> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.email_outlined),
                 // ignore: deprecated_member_use
-                title: Text('Berita'),
+                title: Text('Inbox'),
                 backgroundColor: Colors.blue),
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
@@ -117,13 +109,14 @@ class _MenuUtamaState extends State<MenuUtama> {
                 title: Text('Home'),
                 backgroundColor: Colors.blue),
             BottomNavigationBarItem(
-                icon: Icon(Icons.alarm_add_outlined),
+                icon: Icon(Icons.people_alt),
                 // ignore: deprecated_member_use
-                title: Text('Alert'),
+                title: Text('Profile'),
                 backgroundColor: Colors.blue),
           ],
         ),
       ),
     );
   }
+
 }

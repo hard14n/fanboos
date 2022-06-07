@@ -14,7 +14,6 @@ import 'Controller/login_page.dart';
 import 'Controller/mainpage/menu_utama.dart';
 import 'Systems/connectivity_provider.dart';
 import 'package:get/get.dart';
-
 void main() {
   runApp(const fanboos());
 }

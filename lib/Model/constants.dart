@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 // import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:number_display/number_display.dart';
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 
 const kPrimaryColor = Color(0xFFBA68C8);
 const kPrimaryButtonColor = Colors.purple;
@@ -48,27 +48,25 @@ bool statusfromdetail = false;
 
 String alamaturl = "http://api.fabindo.com/";
 
-Future<Response> getdataFromAPI(String myCompany, String myCategory) async {
-  Dio _dio = Dio();
+// Future<Response> getdataFromAPI(String myCompany, String myCategory) async {
+//   Dio _dio = Dio();
 
-  String _url = alamaturl +
-      "/w_sales_trend/?company=" +
-      myCompany +
-      '&category=' +
-      myCategory;
+//   String _url = alamaturl +
+//       "/w_sales_trend/?company=" +
+//       myCompany +
+//       '&category=' +
+//       myCategory;
 
-  Response response = await _dio.get(_url,
-      options: Options(headers: {
-        'Authorization': 'Bearer $mytoken',
-        'User-Agent': 'flutter-format',
-      }));
+//   Response response = await _dio.get(_url,
+//       options: Options(headers: {
+//         'Authorization': 'Bearer $mytoken',
+//         'User-Agent': 'flutter-format',
+//       }));
 
-  return response;
-}
+//   return response;
+// }
 
 String getNamaBulan(int mon) {
-  // print('Bulan yang masuk >> ' + mon.toString());
-
   String bulan = '';
   List months = [
     'Jan',
@@ -86,7 +84,6 @@ String getNamaBulan(int mon) {
   ];
 
   bulan = months[mon - 1];
-
   return bulan;
 }
 
@@ -97,9 +94,6 @@ Color getColors(String dueDate) {
   DateTime now = DateTime.now();
 
   int diff = parsedDate.difference(now).inDays;
-
-  // DateTime yesterday = DateTime(now.year, now.month, now.day - 6);
-
   barColor = Colors.black;
 
   if (diff >= 0 && diff <= 2) {
@@ -111,7 +105,6 @@ Color getColors(String dueDate) {
       barColor = Colors.red;
     }
   }
-
   return barColor;
 }
 
@@ -136,22 +129,3 @@ Color getColors(String dueDate) {
         );
       });
 }
-
-// void onAlertButtonPressed(context, descTitle, descMessage) {
-//   Alert(
-//     context: context,
-//     type: (descTitle == 'MESSAGE') ? AlertType.success : AlertType.warning,
-//     title: descTitle,
-//     desc: descMessage,
-//     buttons: [
-//       DialogButton(
-//         child: const Text(
-//           "OK",
-//           style: TextStyle(color: Colors.white, fontSize: 20),
-//         ),
-//         onPressed: () => Navigator.pop(context),
-//         width: 120,
-//       )
-//     ],
-//   ).show();
-// }

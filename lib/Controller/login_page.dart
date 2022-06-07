@@ -46,8 +46,8 @@ class _LoginPageState extends State<LoginPage> {
     // txtpass =  TextEditingController(text: 'Fabindo1');
     // txtuser = TextEditingController(text: 'howard.lityo');
     // txtpass = TextEditingController(text: 'Fabindo1');
-    // txtuser = TextEditingController(text: 'hardian');
-    // txtpass = TextEditingController(text: 'itm');
+    txtuser = TextEditingController(text: 'hardian');
+    txtpass = TextEditingController(text: 'itm');
     
     _checkVersion();
 
