@@ -8,11 +8,10 @@ class DrawerEndScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
-    var mediaQueryData = MediaQuery.of(context);
     // ignore: unused_local_variable
-    var hScreen = mediaQueryData.size.height;
+    var hScreen = MediaQuery.of(context).size.height;
     // ignore: unused_local_variable
-    var wScreen = mediaQueryData.size.width;
+    var wScreen = MediaQuery.of(context).size.width;
     return Drawer(
       child: ListView(
         children: [

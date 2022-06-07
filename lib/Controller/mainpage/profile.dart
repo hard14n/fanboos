@@ -3,12 +3,12 @@
 import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
 
-class AlertScreen extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   @override
-  _AlertScreenState createState() => _AlertScreenState();
+  _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _AlertScreenState extends State<AlertScreen> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
