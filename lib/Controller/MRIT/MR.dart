@@ -1,9 +1,13 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, file_names, avoid_unnecessary_containers, unused_local_variable, unnecessary_new, avoid_print, unused_import, avoid_web_libraries_in_flutter
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, file_names, avoid_unnecessary_containers, unused_local_variable, unnecessary_new, avoid_print, unused_import, avoid_web_libraries_in_flutter, unrelated_type_equality_checks, deprecated_member_use, non_constant_identifier_names
 
 // import 'dart:html';
+import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
+
+var ResponSimpan = '';
 
 class MRIT extends StatefulWidget {
   @override
@@ -12,6 +16,8 @@ class MRIT extends StatefulWidget {
 
 class _AlertScreenState extends State<MRIT> {
   var dataSimpan = TextEditingController();
+  var errMessage = '';
+
   @override
   Widget build(BuildContext context) {
     var hScreen = MediaQuery.of(context).size.height;
@@ -31,24 +37,43 @@ class _AlertScreenState extends State<MRIT> {
               return IconButton(
                 icon: Icon(Icons.save),
                 onPressed: () => {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: Text("Maintenance Request"),
-                          content: Text(
-                              'Permintaan/Keluhan Anda Berhasil Disimpan.'),
-                          actions: [
-                            // ignore: deprecated_member_use
-                            RaisedButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text('OK'),
-                            )
-                          ],
-                        );
-                      })
+                  if (dataSimpan.text == '')
+                    {
+                      errMessage = 'Data yang disimpan tidak boleh Kosong',
+                      showAlert(context, "Maintenance Request", errMessage)
+                    }
+                  else
+                    {
+                      errMessage =
+                          'Permintaan / Keluhan anda, Berhasil disimpan',
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text("Maintenance Request"),
+                            content: Text(
+                                "Anda yakin ingin menyimpan Permintaan / Keluhan ini ?"),
+                            actions: <Widget>[
+                              FlatButton(
+                                child: Text("YES"),
+                                onPressed: () {
+                                  //Put your code here which you want to execute on Yes button click.
+                                  Navigator.of(context).pop();
+                                  SimpanMR(dataSimpan.text);
+                                },
+                              ),
+                              FlatButton(
+                                child: Text("NO"),
+                                onPressed: () {
+                                  //Put your code here which you want to execute on No button click.
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      )
+                    },
                 },
               );
             }),
@@ -132,5 +157,58 @@ class _AlertScreenState extends State<MRIT> {
         ),
       ),
     );
+  }
+
+  Future<dynamic> ViewAlert(String mytitle, String msg) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(mytitle),
+            content: Text(msg),
+            actions: [
+              FlatButton(
+                onPressed: () {
+                  // print('Click');
+                  Navigator.pop(context);
+                },
+                child: Text('OK'),
+              )
+            ],
+          );
+        });
+  }
+
+  void SimpanMR(String MRKeluhan) async {
+    String _url = alamaturl + "/helpdesk/store";
+    ResponSimpan = '';
+
+    Dio _dio = Dio();
+    try {
+      Response response;
+      dynamic _data = {'permintaan': MRKeluhan};
+      FormData data = FormData.fromMap(_data);
+      response = await _dio.post(
+        _url,
+        data: data,
+        options: Options(
+          headers: {"Authorization": "Bearer $mytoken"},
+        ),
+      );
+
+      if (response.data['respon'] == 1) {
+        print('Masuk Respon');
+        ResponSimpan = 'Permintaan / Keluhan anda, Berhasil disimpan';
+        // showAlert(context, "Maintenance Request", ResponSimpan);
+        ViewAlert('Information Messages', 'Proses Simpan Berhasil.');
+        Navigator.of(context).pop();
+        print(response.data);
+      }
+      // exit(context);
+    } on DioError catch (dioError) {
+      print(dioError.response);
+    } catch (e) {
+      print(e);
+    }
   }
 }

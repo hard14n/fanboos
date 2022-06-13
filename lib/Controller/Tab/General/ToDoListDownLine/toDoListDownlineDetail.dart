@@ -8,12 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-// import 'package:get/get.dart';
-// import 'package:get/get.dart';
-// import 'dart:io';
-
-// import 'package:http/http.dart' as http;
-
 List<FollowUp> myData = [];
 int count = 0;
 int hitung = 0;
@@ -220,7 +214,7 @@ class _ToDoListDownlineDetailState extends State<ToDoListDownlineDetail> {
     );
   }
 
-Container judulBox(double hScreen, double wScreen, context) {
+  Container judulBox(double hScreen, double wScreen, context) {
     DateTime changeDueDate = widget.dueDate;
     String tglDue = changeDueDate.year.toString() +
         ' ' +
@@ -356,6 +350,7 @@ Container judulBox(double hScreen, double wScreen, context) {
         }
 
         print(response.data);
+
       } on DioError catch (dioError) {
         print(dioError.response);
       } catch (e) {

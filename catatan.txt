@@ -141,3 +141,57 @@ untuk komit hasil koding masukan dulu ke stage
 git add . (atau masukan nama file)
 untuk commitnya masukan perintah : git commit -m "Judul message"
 
+showDialog(
+                      context: context,
+                      builder: (context) {
+                        if (dataSimpan.text == '') {
+                          errMessage = 'Data yang disimpan tidak boleh Kosong';
+                        } else {
+                          print(dataSimpan.text);
+
+                          errMessage =
+                              'Permintaan / Keluhan anda, Berhasil disimpan';
+                        }
+
+                        return AlertDialog(
+                          title: Text("Maintenance Request"),
+                          content: Text(errMessage),
+                          actions: [
+                            // ignore: deprecated_member_use
+                            RaisedButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('OK'),
+                            )
+                          ],
+                        );
+                      })
+
+
+
+showDialog(
+  context: context,
+  builder: (context) {
+    return AlertDialog(
+      title: Text("Maintenance Request"),
+      content: Text(
+          "Anda yakin ingin menyimpan Permintaan / Keluhan ini ?"),
+      actions: <Widget>[
+        FlatButton(
+          child: Text("YES"),
+          onPressed: () {
+            //Put your code here which you want to execute on Yes button click.
+            Navigator.of(context).pop();
+          },
+        ),
+        FlatButton(
+          child: Text("NO"),
+          onPressed: () {
+            //Put your code here which you want to execute on No button click.
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+},
