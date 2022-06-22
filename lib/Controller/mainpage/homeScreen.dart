@@ -38,8 +38,8 @@ class _HomeScreenState extends State<HomeScreen>
                   children: [
                     ButtonQuickView(Icons.add_task, 'MR'),
                     ButtonQuickView(
-                        Icons.checklist_rtl_outlined, 'Things To Do'),
-                    ButtonQuickView(Icons.note_add, 'Keluhan'),
+                        Icons.checklist_rtl_outlined, 'Listing Fee'),
+                    // ButtonQuickView(Icons.note_add, 'Keluhan'),
                   ],
                 ),
               ],

@@ -31,6 +31,8 @@ class _WidgetToDoListPribadiState extends State<WidgetToDoListPribadi>
     try {
       response = await _dio.get(_url,
           options: Options(headers: {"Authorization": "Bearer $mytoken"}));
+      
+      // print(response.data['data']);
 
       if (response.statusCode == invalidTokenStatusCode) {
         // login ulang

@@ -2,10 +2,12 @@
 
 import 'package:fanboos/Controller/Keluhan/Keluhan.dart';
 import 'package:fanboos/Controller/MRIT/MR.dart';
-import 'package:fanboos/Controller/Things2Do/Things2Do.dart';
+// import 'package:fanboos/Controller/Things2Do/Things2Do.dart';
 import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'Listing_Fee/Listing_Fee.dart';
 
 class ButtonQuickView extends StatefulWidget {
   final IconData _iconData;
@@ -58,10 +60,11 @@ class _MRITState extends State<ButtonQuickView> {
                     }
                     break;
 
-                  case 'Things To Do':
+                  case 'Listing Fee':
                     {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Things2Do()));
+                          MaterialPageRoute(
+                              builder: (context) => ListingFee()));
                     }
                     break;
                   case 'Keluhan':

@@ -43,8 +43,6 @@ class _ToDoListDownLineState extends State<ToDoListDownLine> {
 
           dtArray = TodoListDownline.listFromJson(response.data['data']);
 
-          // print(dtArray);
-
           setState(() {
             loading = true;
             count = 1;
