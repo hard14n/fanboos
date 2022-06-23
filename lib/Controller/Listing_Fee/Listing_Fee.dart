@@ -144,6 +144,7 @@ class _AlertScreenState extends State<ListingFee> {
         ),
       ),
     );
+
   }
 
   InkWell listData(BuildContext context, ListingFeeModel e) {
