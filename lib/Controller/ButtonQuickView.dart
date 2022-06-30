@@ -2,6 +2,7 @@
 
 import 'package:fanboos/Controller/Keluhan/Keluhan.dart';
 import 'package:fanboos/Controller/MRIT/MR.dart';
+// import 'package:fanboos/Controller/mainpage/berita.dart';
 // import 'package:fanboos/Controller/Things2Do/Things2Do.dart';
 import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +44,7 @@ class _MRITState extends State<ButtonQuickView> {
             onTapUp: (details) {
               setState(() {
                 isPressed = !isPressed;
+                // print('onTapUp');
               });
             },
             onTapCancel: () {
@@ -52,6 +54,8 @@ class _MRITState extends State<ButtonQuickView> {
             },
             onTap: () {
               setState(() {
+                // print('onTap');
+
                 switch (JudulButton) {
                   case 'MR':
                     {
@@ -62,7 +66,9 @@ class _MRITState extends State<ButtonQuickView> {
 
                   case 'Listing Fee':
                     {
-                      Navigator.push(context,
+                      // print('Listting Fee');
+                      Navigator.push(
+                          context,
                           MaterialPageRoute(
                               builder: (context) => ListingFee()));
                     }
@@ -73,7 +79,6 @@ class _MRITState extends State<ButtonQuickView> {
                           MaterialPageRoute(builder: (context) => Keluhan()));
                     }
                     break;
-
                 }
               });
             },
@@ -97,7 +102,8 @@ class _MRITState extends State<ButtonQuickView> {
         Container(
           margin: const EdgeInsets.fromLTRB(20.0, 15.0, 0.0, 0.0),
           child: Text(JudulButton),
-        )
+        ),
+        
       ],
     );
   }

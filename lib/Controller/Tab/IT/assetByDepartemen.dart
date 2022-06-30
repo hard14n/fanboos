@@ -78,7 +78,7 @@ class _AssetITByDepartemenState extends State<AssetITByDepartemen> {
     });
 
     return Container(
-      height: hScreen * 0.35,
+      height: hScreen * 0.3,
       child: myArray.isEmpty && count == 0
           ? CircularProgressIndicator()
           : graphAllAsset(context, hScreen, wScreen),
@@ -117,7 +117,7 @@ class _AssetITByDepartemenState extends State<AssetITByDepartemen> {
               child: myArray.isEmpty
                   ? dataKosongMethod(wScreen)
                   : Container(
-                      height: hScreen * 0.35,
+                      height: hScreen * 0.28,
                       child: grapik,
                     ),
             ),

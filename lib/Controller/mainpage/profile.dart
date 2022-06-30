@@ -32,6 +32,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Container(
             // color: Colors.blue,
             // height: 100,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                    color: Colors.grey, width: 1, style: BorderStyle.solid),
+              ),
+            ),
+            padding: const EdgeInsets.only(bottom: 5),
             width: wScreen,
             margin: EdgeInsets.all(2),
             child: Column(
@@ -50,10 +58,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
           ),
-          Text(''),
           Container(
             // color: Colors.blue,
             // height: 100,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                    color: Colors.grey, width: 1, style: BorderStyle.solid),
+              ),
+            ),
+            padding: const EdgeInsets.only(bottom: 5),
             width: wScreen,
             margin: EdgeInsets.all(2),
             child: Column(
@@ -72,10 +87,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
           ),
-          Text(''),
           Container(
             // color: Colors.blue,
             // height: 100,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                    color: Colors.grey, width: 1, style: BorderStyle.solid),
+              ),
+            ),
+            padding: const EdgeInsets.only(bottom: 5),
             width: wScreen,
             margin: EdgeInsets.all(2),
             child: Column(
@@ -94,10 +116,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
           ),
-          Text(''),
           Container(
             // color: Colors.blue,
             // height: 100,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                    color: Colors.grey, width: 1, style: BorderStyle.solid),
+              ),
+            ),
+            padding: const EdgeInsets.only(bottom: 5),
             width: wScreen,
             margin: EdgeInsets.all(2),
             child: Column(
@@ -116,6 +145,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
           ),
+          Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                    color: Colors.grey, width: 1, style: BorderStyle.solid),
+              ),
+            ),
+            padding: const EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 10.0),
+            // height: 100,
+            alignment: Alignment.centerLeft,
+            width: wScreen,
+            // margin: EdgeInsets.all(2),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, "/loginpage");
+                    // Navigator.pushReplacementNamed(context, "/");
+                  },
+                  child: Text(
+                    'Logout',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: kPrimaryColor),
+                  ),
+                ),
+                
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -127,10 +188,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         color: kPrimaryColor,
         gradient:
             LinearGradient(colors: const [kPrimaryColor, kBackgroundColor]),
-        // borderRadius: BorderRadius.only(
-        //   bottomLeft: Radius.circular(30),
-        //   bottomRight: Radius.circular(30),
-        // ),
       ),
       child: Row(
         children: [

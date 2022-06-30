@@ -51,13 +51,14 @@ class _w_sales_TrendState extends State<w_sales_Trend> {
           count = 1;
         });
       } else {
-        setState(() {
-          // print('getdataCategoryFromAPI loading = False ');
-
-          loading = false;
-          dtArray = [];
-          count = 1;
-        });
+        setState(
+          () {
+            // print('getdataCategoryFromAPI loading = False ');
+            loading = false;
+            dtArray = [];
+            count = 1;
+          },
+        );
       }
     } on Exception catch (_) {
       print("throwing new error");
@@ -73,21 +74,21 @@ class _w_sales_TrendState extends State<w_sales_Trend> {
     return Column(children: [
       Container(
         // color: Colors.lightBlue,
-        height: hScreen * 0.3,
+        // height: hScreen * 0.27,
         width: wScreen,
-        margin: EdgeInsets.fromLTRB(1.0, 5, 1.0, 1.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: 1,
-              color: Colors.grey,
-              blurRadius: 1.0,
-              offset: Offset(0.0, 0.0),
-            ),
-          ],
-        ),
+        // margin: EdgeInsets.fromLTRB(1.0, 5, 1.0, 1.0),
+        // decoration: BoxDecoration(
+        //   borderRadius: BorderRadius.circular(5),
+        //   color: Colors.white,
+        //   boxShadow: [
+        //     BoxShadow(
+        //       spreadRadius: 1,
+        //       color: Colors.grey,
+        //       blurRadius: 1.0,
+        //       offset: Offset(0.0, 0.0),
+        //     ),
+        //   ],
+        // ),
         child: Column(
           children: [
             Row(
@@ -95,7 +96,10 @@ class _w_sales_TrendState extends State<w_sales_Trend> {
                 Container(
                   // color: Colors.blue,
                   margin: EdgeInsets.only(left: 10),
-                  child: Text('Sales Trend',style: TextStyle(fontWeight: FontWeight.bold) ,),
+                  child: Text(
+                    'Sales Trend',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
                 Spacer(),
                 Container(
@@ -133,7 +137,7 @@ class _w_sales_TrendState extends State<w_sales_Trend> {
             ),
             Container(
               color: Colors.white30,
-              height: hScreen * 0.2,
+              height: hScreen * 0.195,
               width: wScreen * 0.9,
               margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
               child: GraphSalesTrend(

@@ -10,6 +10,7 @@ class TabGeneral extends StatelessWidget {
     // var wScreen = MediaQuery.of(context).size.width;
     return Container(
       margin: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 0.0),
+      color: Colors.blueAccent,
       child: ListView(
         children: [
           Widget2DoList(),

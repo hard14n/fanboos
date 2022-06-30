@@ -70,19 +70,7 @@ class _WidgetITState extends State<WidgetIT> {
     return Column(children: [
       Container(
         width: wScreen,
-        margin: EdgeInsets.fromLTRB(1.0, 5, 1.0, 1.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: 1,
-              color: Colors.grey,
-              blurRadius: 1.0,
-              offset: Offset(0.0, 0.0),
-            ),
-          ],
-        ),
+        margin: EdgeInsets.fromLTRB(1.0, 0.0, 1.0, 1.0),
         child: Column(
           children: [
             Row(
@@ -96,7 +84,7 @@ class _WidgetITState extends State<WidgetIT> {
                 Container(
                   // color: Colors.yellow,
                   width: wScreen * 0.4,
-                  margin: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+                  // margin: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
                   child: DropDownCategory(hScreen),
                 ),
               ],
@@ -105,7 +93,7 @@ class _WidgetITState extends State<WidgetIT> {
                 color: Colors.yellow[50],
                 // height: hScreen * 0.3,
                 width: wScreen * 0.9,
-                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                // margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                 child: selectedCategory == 'All'
                     ? AssetIT()
                     : AssetITByDepartemen())

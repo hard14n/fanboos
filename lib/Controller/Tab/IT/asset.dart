@@ -58,19 +58,18 @@ class _AssetITState extends State<AssetIT> {
 
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
-    var mediaQueryData = MediaQuery.of(context);
     // ignore: unused_local_variable
-    var hScreen = mediaQueryData.size.height;
+    var hScreen = MediaQuery.of(context).size.height;
     // ignore: unused_local_variable
-    var wScreen = mediaQueryData.size.width;
+    var wScreen = MediaQuery.of(context).size.width;
 
     dtArray.isEmpty && count == 0
         ? getdataAssetFromAPI()
         : print('Data OK');
 
     return Container(
-      height: hScreen * 0.35,
+      // color: Colors.blueAccent,
+      height: hScreen * 0.3,
       child: dtArray.isEmpty && count == 0
           ? const CircularProgressIndicator()
           : graphAllAsset(context, hScreen, wScreen),
@@ -83,12 +82,13 @@ class _AssetITState extends State<AssetIT> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               alignment: Alignment.centerLeft,
               width: wScreen,
-              margin: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+              // margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
               child: dtArray.isEmpty
                   ? dataKosong(wScreen)
                   : dataAsset(wScreen, hScreen),
@@ -117,13 +117,15 @@ class _AssetITState extends State<AssetIT> {
     );
 
     return Container(
-        height: hScreen * 0.35,
+        // color: Colors.green,
+        height: hScreen * 0.28,
         alignment: Alignment.topCenter,
         child: barchart);
   }
 
   Container dataKosong(wScreen) {
     return Container(
+      
       alignment: Alignment.topCenter,
       child: const Text('Data Asset tidak ada'),
     );

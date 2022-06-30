@@ -81,32 +81,32 @@ class _Widget_YTD_Sales_GrowthState extends State<Widget_YTD_Sales_Growth> {
     return Column(children: [
       Container(
         // color: Colors.lightBlue,
-        height: hScreen * 0.35,
+        height: hScreen * 0.27,
         width: wScreen,
-        margin: EdgeInsets.fromLTRB(1.0, 5, 1.0, 1.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: 1,
-              color: Colors.grey,
-              blurRadius: 1.0,
-              offset: Offset(0.0, 0.0),
-            ),
-          ],
-        ),
+        // margin: EdgeInsets.fromLTRB(1.0, 0, 1.0, 1.0),
+        // decoration: BoxDecoration(
+        //   borderRadius: BorderRadius.circular(5),
+        //   color: Colors.white,
+        //   boxShadow: [
+        //     BoxShadow(
+        //       spreadRadius: 1,
+        //       color: Colors.grey,
+        //       blurRadius: 1.0,
+        //       offset: Offset(0.0, 0.0),
+        //     ),
+        //   ],
+        // ),
         child: Column(
           children: [
-            Container(
-              // color: Colors.blue,
-              alignment: Alignment.topLeft,
-              margin: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 0.0),
-              child: Text(
-                'YTD Sales Growth',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
+            // Container(
+            //   // color: Colors.blue,
+            //   alignment: Alignment.topLeft,
+            //   margin: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 0.0),
+            //   child: Text(
+            //     'YTD Sales Growth',
+            //     style: TextStyle(fontWeight: FontWeight.bold),
+            //   ),
+            // ),
             Row(
               children: <Widget>[
                 InkWell(
@@ -142,7 +142,7 @@ class _Widget_YTD_Sales_GrowthState extends State<Widget_YTD_Sales_Growth> {
                   child: Row(
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+                        margin: EdgeInsets.only(left: 10.0),
                         child: Text('Sale <= ' + selecteddateCut + ' '),
                       ),
                       Container(
@@ -159,7 +159,7 @@ class _Widget_YTD_Sales_GrowthState extends State<Widget_YTD_Sales_Growth> {
                 Container(
                   // color: Colors.yellow,
                   width: wScreen * 0.4,
-                  margin: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+                  margin: EdgeInsets.only(right: 10.0),
                   child: DropdownButton(
                     menuMaxHeight: hScreen * 0.6,
                     isExpanded: true,
@@ -188,12 +188,8 @@ class _Widget_YTD_Sales_GrowthState extends State<Widget_YTD_Sales_Growth> {
             ),
             Container(
                 color: Colors.white30,
-                height: hScreen * 0.2,
-                width: wScreen * 0.9,
-                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-                child: graphContainer()
-                // Text(selectedCategory),
-                )
+                height: hScreen * 0.195,
+                child: graphContainer())
           ],
         ),
       )
@@ -209,7 +205,6 @@ class _Widget_YTD_Sales_GrowthState extends State<Widget_YTD_Sales_Growth> {
     // print('===================================================');
 
     return Container(
-      
       child: YTD_S_Growth(
         mycategory: selectedCategory,
         mycompany: myCompany,

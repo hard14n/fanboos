@@ -16,7 +16,7 @@ class _Widget2DoListState extends State<Widget2DoList> {
     super.initState();
 
     currenttab = formActive == '2DOPribadi' ? 0 : 1;
-    
+
     // print(formActive + ' >> ' + 'Init State');
   }
 
@@ -26,9 +26,6 @@ class _Widget2DoListState extends State<Widget2DoList> {
     // ignore: unused_local_variable
     var wScreen = MediaQuery.of(context).size.width;
 
-    // print(formActive);
-    // print(currenttab);
-
     return DefaultTabController(
       initialIndex: currenttab,
       length: 2,
@@ -37,7 +34,7 @@ class _Widget2DoListState extends State<Widget2DoList> {
         child: Column(
           children: [
             Container(
-              height: 48,
+              height: 50,
               child: TabBar(
                 unselectedLabelColor: Colors.grey,
                 // labelColor: kPrimaryColor,
@@ -59,7 +56,7 @@ class _Widget2DoListState extends State<Widget2DoList> {
               ),
             ),
             Container(
-              height: hScreen * 0.56,
+              height: hScreen - 200,
               child: TabBarView(children: [
                 WidgetToDoListPribadi(),
                 WidgetToDoListDownline(),

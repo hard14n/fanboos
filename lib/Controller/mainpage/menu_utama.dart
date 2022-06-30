@@ -1,11 +1,14 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names, avoid_unnecessary_containers, sized_box_for_whitespace, constant_identifier_names, unnecessary_new, unused_import, avoid_print
 
+import 'package:fanboos/Controller/Tab/General/WidgetToDoList.dart';
 import 'package:fanboos/Controller/login_page.dart';
+import 'package:fanboos/Controller/mainpage/Informasi.dart';
 // import 'package:fanboos/Controller/mainpage/alertScreen.dart';
 import 'package:fanboos/Controller/mainpage/berita.dart';
 import 'package:fanboos/Controller/mainpage/drawerEndScreen.dart';
 import 'package:fanboos/Controller/mainpage/drawerScreen.dart';
 import 'package:fanboos/Controller/mainpage/homeScreen.dart';
+import 'package:fanboos/Controller/mainpage/home_screen.dart';
 import 'package:fanboos/Controller/mainpage/profile.dart';
 import 'package:fanboos/Model/constants.dart';
 import 'package:fanboos/Systems/no_internet.dart';
@@ -28,8 +31,9 @@ class _MenuUtamaState extends State<MenuUtama> {
   int _selectorIndex = currenttab;
   // ignore: unused_field
   final List<Widget> _widgetOption = [
+    Home_Screen(),
     BeritaScreen(),
-    HomeScreen(),
+    Widget2DoList(),
     ProfileScreen()
   ];
 
@@ -43,7 +47,8 @@ class _MenuUtamaState extends State<MenuUtama> {
   @override
   void initState() {
     super.initState();
-    _selectorIndex = 1;
+    _selectorIndex =
+        0; // angka 1 untuk default buttom tab bar "Home" ada di tab 1
     _onItemTab(_selectorIndex);
 
     Provider.of<ConnectivityProvider>(context, listen: false).startMonitoring();
@@ -58,12 +63,15 @@ class _MenuUtamaState extends State<MenuUtama> {
         '/loginpage': (BuildContext context) => new LoginPage(),
       },
       home: Scaffold(
-        drawer: DrawerScreen(),
-        // endDrawer: DrawerEndScreen(),
+        // drawer: DrawerScreen(),
+        // endDrawer: InfoScreen(),
         appBar: AppBar(
           centerTitle: true,
           title: Text(companyName),
           backgroundColor: kPrimaryColor,
+          elevation: 0,
+          toolbarHeight: 50,
+          // titleSpacing: 20,
         ),
         body: Consumer<ConnectivityProvider>(builder: (context, model, child) {
           // ignore: unnecessary_null_comparison
@@ -89,34 +97,40 @@ class _MenuUtamaState extends State<MenuUtama> {
     return Container(
       color: Colors.black54,
       child: DefaultTabController(
-        length: 2,
-        // initialIndex: 0,
+        length: 1,
+        // initialIndex: 3,
         child: BottomNavigationBar(
           currentIndex: _selectorIndex,
           onTap: _onItemTab,
           backgroundColor: Colors.white,
           selectedItemColor: kPrimaryColor,
           unselectedItemColor: Colors.black54,
+          selectedLabelStyle: TextStyle(color: kPrimaryColor),
+          unselectedLabelStyle: TextStyle(color: Colors.black54),
           items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.email_outlined),
-                // ignore: deprecated_member_use
-                title: Text('Inbox'),
-                backgroundColor: Colors.blue),
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 // ignore: deprecated_member_use
                 title: Text('Home'),
-                backgroundColor: Colors.blue),
+                backgroundColor: Colors.white),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.email_outlined),
+                // ignore: deprecated_member_use
+                title: Text('Task'),
+                backgroundColor: Colors.white),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.article_outlined),
+                // ignore: deprecated_member_use
+                title: Text('To Do List'),
+                backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: Icon(Icons.people_alt),
                 // ignore: deprecated_member_use
                 title: Text('Profile'),
-                backgroundColor: Colors.blue),
+                backgroundColor: Colors.white),
           ],
         ),
       ),
     );
   }
-
 }

@@ -159,7 +159,7 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
       child: Column(
         children: [
           Container(
-            height: 30,
+            // height: 30,
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
@@ -182,9 +182,9 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
             ),
           ),
           Container(
-            height: 30,
+            // height: 30,
             alignment: Alignment.centerLeft,
-            color: Colors.blue[100],
+            // color: Colors.blue[100],
             child: Row(
               children: [
                 Text(
@@ -200,10 +200,16 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
           ),
           dtArray.isEmpty && count == 0
               ? CircularProgressIndicator()
-              : RefreshIndicator(
-                  triggerMode: RefreshIndicatorTriggerMode.onEdge,
-                  onRefresh: _onRefresh,
-                  child: viewDataToDOList(hScreen, wScreen, context),
+              : Container(
+                  width: wScreen * 0.98,
+                  margin: const EdgeInsets.only(top: 2),
+                  height: hScreen - 278,
+                  // color: Colors.green,
+                  child: RefreshIndicator(
+                    triggerMode: RefreshIndicatorTriggerMode.onEdge,
+                    onRefresh: _onRefresh,
+                    child: viewDataToDOList(hScreen, wScreen, context),
+                  ),
                 ),
         ],
       ),
@@ -213,8 +219,6 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
   Container viewDataToDOList(
       double hScreen, double wScreen, BuildContext context) {
     return Container(
-      height: hScreen * 0.4,
-      width: wScreen * 0.98,
       // color: Colors.grey[50],
       // margin: EdgeInsets.all(2),
       child: ListView(
@@ -232,7 +236,7 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
   // ignore: non_constant_identifier_names
   DropdownButton<String> DropDownCategory(double hScreen) {
     return DropdownButton(
-      menuMaxHeight: hScreen * 0.6,
+      // menuMaxHeight: hScreen * 0.3,
       value: selectedPIC,
       hint: Text('Pilih PIC'),
       onChanged: (selectedValue) {

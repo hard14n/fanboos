@@ -1,22 +1,21 @@
-// ignore_for_file: avoid_unnecessary_containers, non_constant_identifier_names, unused_local_variable, avoid_print
+// ignore_for_file: unused_import, file_names, avoid_print, non_constant_identifier_names, unused_element
 
 import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
-// List<MRModel> dtArray = [];
-
 bool loading = false;
 int count = 0;
 int jumlahMR = 0;
 
-class BeritaScreen extends StatefulWidget {
-  const BeritaScreen({Key? key}) : super(key: key);
+class InfoScreen extends StatefulWidget {
+  const InfoScreen({Key? key}) : super(key: key);
+
   @override
-  _BeritaScreenState createState() => _BeritaScreenState();
+  State<InfoScreen> createState() => _InfoScreenState();
 }
 
-class _BeritaScreenState extends State<BeritaScreen> {
+class _InfoScreenState extends State<InfoScreen> {
   @override
   void initState() {
     super.initState();
@@ -28,52 +27,6 @@ class _BeritaScreenState extends State<BeritaScreen> {
     count = 0;
     getdataFromAPIwDIO("/helpdesk_notification/get_need_approval");
     return Future.delayed(const Duration(seconds: 1));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var hScreen = MediaQuery.of(context).size.height;
-    var wScreen = MediaQuery.of(context).size.width;
-
-    return Container(
-      child: ColumnInformasi(wScreen, hScreen),
-    );
-  }
-
-  Column ColumnInformasi(double wScreen, double hScreen) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.all(10),
-          height: 50,
-          width: wScreen,
-          color: Colors.blue,
-          child: const SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Text(
-              "Pemberitahuan aplikasi / Notifikasi",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-          ),
-        ),
-        Container(
-          width: wScreen,
-          constraints:
-              BoxConstraints.expand(height: hScreen - (hScreen * 0.28)),
-          color: Colors.white,
-          child: ListView(
-            children: [
-              RefreshIndicator(
-                  triggerMode: RefreshIndicatorTriggerMode.onEdge,
-                  onRefresh: _onRefresh,
-                  child: MaintenanceRequest(hScreen, wScreen)),
-            ],
-          ),
-        ),
-      ],
-    );
   }
 
   void getdataFromAPIwDIO(String Myurl) async {
@@ -114,6 +67,91 @@ class _BeritaScreenState extends State<BeritaScreen> {
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    var hScreen = MediaQuery.of(context).size.height;
+    // ignore: unused_local_variable
+    var wScreen = MediaQuery.of(context).size.width;
+
+    return Drawer(
+      child: Column(
+        children: [
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              color: kPrimaryColor,
+            ),
+            child: Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 0.0, wScreen * 0.03, 0.0),
+                  child: const Icon(Icons.email_outlined),
+                ),
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Informasi Umum',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      // Text(title),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            title: ColumnInformasi(wScreen, hScreen),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Column ColumnInformasi(double wScreen, double hScreen) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.all(10),
+          // height: 50,
+          width: wScreen,
+          color: Colors.blue,
+          child: const SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Text(
+              "Pemberitahuan aplikasi / Notifikasi",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Container(
+          width: wScreen,
+          constraints:
+              BoxConstraints.expand(height: hScreen - (hScreen * 0.28) - 60),
+          // color: Colors.yellow,
+          child: ListView(
+            children: [
+              RefreshIndicator(
+                  triggerMode: RefreshIndicatorTriggerMode.onEdge,
+                  onRefresh: _onRefresh,
+                  child: MaintenanceRequest(hScreen, wScreen)),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   Container MaintenanceRequest(double hScreen, double wScreen) {
     return Container(
       alignment: Alignment.centerLeft,
@@ -129,7 +167,7 @@ class _BeritaScreenState extends State<BeritaScreen> {
       child: Row(
         children: [
           const Text(
-            "Maintenance Request / Need Approval",
+            "MR / Need Approval",
             style: TextStyle(
                 fontSize: 16,
                 color: kPrimaryColor,

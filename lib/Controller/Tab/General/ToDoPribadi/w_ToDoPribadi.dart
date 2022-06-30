@@ -94,7 +94,7 @@ class _WidgetToDoListPribadiState extends State<WidgetToDoListPribadi>
       child: Column(
         children: [
           Container(
-            height: 30,
+            // height: 30,
             alignment: Alignment.centerLeft,
             child: Text(
               'Todo List Pribadi',
@@ -110,10 +110,9 @@ class _WidgetToDoListPribadiState extends State<WidgetToDoListPribadi>
                   triggerMode: RefreshIndicatorTriggerMode.onEdge,
                   onRefresh: _onRefresh,
                   child: Container(
-                    height: hScreen * 0.47,
-                    width: wScreen * 0.98,
+                    margin: const EdgeInsets.only(top: 2),
+                    height: hScreen - 230,
                     // color: Colors.green,
-                    // margin: EdgeInsets.all(2),
                     child: ListView(
                       children: dtArray
                           .map(

@@ -64,14 +64,14 @@ class _YTD_S_GrowthState extends State<YTD_S_Growth> {
         children: [
           Container(
             // color: Colors.blue[100],
-            width: wScreen * 0.5,
+            // width: wScreen * 0.5,
             child: dtArray.isEmpty ? dataKosongMethod(wScreen) : barChart(),
           ),
-          Container(
-            // color: Colors.green[100],
-            width: wScreen * 0.4,
-            child: dtArray.isEmpty ? dataKosongMethod(wScreen) : pieChart(),
-          ),
+          // Container(
+          //   // color: Colors.green[100],
+          //   width: wScreen * 0.4,
+          //   child: dtArray.isEmpty ? dataKosongMethod(wScreen) : pieChart(),
+          // ),
         ],
       ),
     ));
