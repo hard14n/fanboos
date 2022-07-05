@@ -105,8 +105,10 @@ class _MenuUtamaState extends State<MenuUtama> {
           backgroundColor: Colors.white,
           selectedItemColor: kPrimaryColor,
           unselectedItemColor: Colors.black54,
-          selectedLabelStyle: TextStyle(color: kPrimaryColor),
-          unselectedLabelStyle: TextStyle(color: Colors.black54),
+          selectedLabelStyle:
+              TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+          // unselectedLabelStyle: TextStyle(color: Colors.black54),
+          showUnselectedLabels: true,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
