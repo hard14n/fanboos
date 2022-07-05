@@ -127,7 +127,7 @@ class _AlertScreenState extends State<ListingFee> {
                     child: Container(
                       height: hScreen - (hScreen * 0.3),
                       width: wScreen * 0.98,
-                      color: Colors.green,
+                      // color: Colors.green,
                       // margin: EdgeInsets.all(2),
                       child: ListView(
                         children: dtArray
