@@ -23,7 +23,7 @@ import 'package:url_launcher/url_launcher.dart';
 // import 'package:simple_url_preview/simple_url_preview.dart';
 
 bool newVersi = false;
-String currVersi = '';
+String currVersi = 'None';
 
 TextEditingController txtuser = TextEditingController();
 TextEditingController txtpass = TextEditingController();
@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
     // txtpass = TextEditingController(text: 'Fabindo1');
     txtuser = TextEditingController(text: 'hardian');
     txtpass = TextEditingController(text: 'itm');
-    
+
     _checkVersion();
 
     super.initState();
@@ -95,14 +95,13 @@ class _LoginPageState extends State<LoginPage> {
   void _checkVersion() async {
     final newVersion = NewVersion(androidId: "com.snapchat.android");
     final status = await newVersion.getVersionStatus();
-
+    
     // print(status!.localVersion);
     setState(() {
       currVersi = status!.localVersion;
-    });
+    } );
 
     // print(alamaturl);
-
     final uri =
         Uri.parse(alamaturl + "/version/check?user_version=" + currVersi);
 
@@ -262,8 +261,7 @@ class _LoginPageState extends State<LoginPage> {
               Text("Don't Have an Account ?  "),
               GestureDetector(
                 onTap: () {
-                  showAlert(context,
-                      "Register Account",
+                  showAlert(context, "Register Account",
                       "Untuk Register Account, Silahkan Hubungi Administrator Anda");
                 },
                 child: Text(
@@ -380,7 +378,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<String> _login(context) async {
     // ignore: non_constant_identifier_names
     if (txtuser.text.isEmpty || txtuser.text == '') {
-      showAlert(context,"Warning Message",
+      showAlert(context, "Warning Message",
           "Masukan Nomer Induk Karyawan anda atau User Login anda");
       exit(context);
     }
@@ -397,14 +395,14 @@ class _LoginPageState extends State<LoginPage> {
       final uri = Uri.parse(alamaturl + "/auth/login");
       final response = await http.post(uri,
           body: {"username": txtuser.text, "password": txtpass.text});
-      
+
       var dataResult = json.decode(response.body);
 
       Map<String, dynamic> map = dataResult;
-
+      print(map);
       if (map['respon'] == 0) {
-          showAlert(context, "Err MESSAGE", "Login Fail");
-          exit(context);
+        showAlert(context, "Err MESSAGE", "Login Fail");
+        exit(context);
       } else {
         setState(() {
           userID = map['data']['user']['id_user'];
@@ -435,9 +433,14 @@ class _LoginPageState extends State<LoginPage> {
     } on Exception catch (_) {
       print("throwing new error");
       // throw Exception("Error on server");
-      
+
       // ignore: dead_code
-      showAlert(context, "MESSAGE", "Login Fail !!" + "\n" + "Periksa User Password dan Koneksi Jaringan Anda"  );
+      showAlert(
+          context,
+          "MESSAGE",
+          "Login Fail !!" +
+              "\n" +
+              "Periksa User Password dan Koneksi Jaringan Anda");
     }
     return 'Sukses';
   }
@@ -496,6 +499,4 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
-
-  
 }

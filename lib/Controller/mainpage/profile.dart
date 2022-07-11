@@ -147,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           Container(
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: kPrimaryColor,
               border: Border(
                 bottom: BorderSide(
                     color: Colors.grey, width: 1, style: BorderStyle.solid),
@@ -155,12 +155,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             padding: const EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 10.0),
             // height: 100,
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.center,
             width: wScreen,
             // margin: EdgeInsets.all(2),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
                   onTap: () {
@@ -170,7 +168,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Text(
                     'Logout',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, color: kPrimaryColor),
+                        fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ),
                 

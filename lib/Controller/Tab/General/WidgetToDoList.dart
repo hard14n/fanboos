@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names, avoid_unnecessary_containers, sized_box_for_whitespace, constant_identifier_names, unnecessary_new
+// ignore_for_file: file_names
 
 import 'package:fanboos/Controller/Tab/General/ToDoListDownLine/w_ToDoListDownline.dart';
 import 'package:fanboos/Controller/Tab/General/ToDoPribadi/w_ToDoPribadi.dart';
@@ -6,6 +6,8 @@ import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
 
 class Widget2DoList extends StatefulWidget {
+  const Widget2DoList({Key? key}) : super(key: key);
+
   @override
   _Widget2DoListState createState() => _Widget2DoListState();
 }
@@ -33,7 +35,7 @@ class _Widget2DoListState extends State<Widget2DoList> {
         padding: const EdgeInsets.all(5),
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: TabBar(
                 unselectedLabelColor: Colors.grey,
@@ -41,7 +43,7 @@ class _Widget2DoListState extends State<Widget2DoList> {
                 indicator: BoxDecoration(
                     color: Colors.blueAccent,
                     borderRadius: BorderRadius.circular(5)),
-                tabs: [
+                tabs: const [
                   Tab(
                     icon: Icon(Icons.article_outlined),
                     iconMargin: EdgeInsets.only(left: 0),
@@ -55,7 +57,7 @@ class _Widget2DoListState extends State<Widget2DoList> {
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               height: hScreen - 200,
               child: TabBarView(children: [
                 WidgetToDoListPribadi(),
@@ -66,5 +68,6 @@ class _Widget2DoListState extends State<Widget2DoList> {
         ),
       ),
     );
+ 
   }
 }

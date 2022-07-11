@@ -1,17 +1,13 @@
-// import 'dart:convert';
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names, avoid_unnecessary_containers, sized_box_for_whitespace, constant_identifier_names, unnecessary_new, prefer_typing_uninitialized_variables, avoid_print
+// ignore_for_file: file_names, constant_identifier_names, avoid_print, avoid_unnecessary_containers, non_constant_identifier_names
 
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
-// ignore: unused_import
-import 'package:fanboos/Controller/Tab/General/Model/PIC_Model.dart';
-import 'package:fanboos/Controller/Tab/General/ToDoListDownLine/Model/todoListDownlineModel.dart';
-import 'package:fanboos/Controller/Tab/General/ToDoPribadi/toDoListDetail.txt';
 import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:convert';
+import 'package:dio/dio.dart';
+import 'Model/todoListDownlineModel.dart';
 import 'package:http/http.dart' as http;
+
+import 'ToDoListDetail/toDoListDetail.dart';
 
 List<TodoListDownline> dtArray = [];
 
@@ -20,22 +16,16 @@ int count = 0;
 
 int jumlahdata = 0;
 
-var selectedPIC;
+String selectedPIC = '';
 
-class WidgetToDoListDownline extends StatefulWidget {
-  // ignore: non_constant_identifier_names
+class ToDoListDownline extends StatefulWidget {
+  const ToDoListDownline({Key? key}) : super(key: key);
   static const String TAG = '/WidgetToDoListDownline';
   @override
-  _WidgetToDoListDownlineState createState() => _WidgetToDoListDownlineState();
+  State<ToDoListDownline> createState() => _ToDoListDownlineState();
 }
 
-class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
-  @override
-
-  // late List<DropdownMenuItem<String>> _dropDownMenuItems;
-  // ignore: override_on_non_overriding_member
-
-  // ignore: override_on_non_overriding_member
+class _ToDoListDownlineState extends State<ToDoListDownline> {
   final List<DropdownMenuItem<String>> _listpic = [];
 
   @override
@@ -60,15 +50,15 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
     // Map<String, dynamic> map = listpic;
 
     setState(() {
-      _listpic.add(new DropdownMenuItem(value: '0', child: new Text('All')));
+      _listpic.add(const DropdownMenuItem(value: '0', child: Text('All')));
     });
 
     if (listpic['respon'] == 1) {
       for (var datapic in listpic['data']) {
         setState(() {
-          _listpic.add(new DropdownMenuItem(
+          _listpic.add(DropdownMenuItem(
               value: datapic['id_user'].toString(),
-              child: new Text(datapic['nama_lengkap'].toString())));
+              child: Text(datapic['nama_lengkap'].toString())));
         });
       }
     }
@@ -126,13 +116,14 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
     }
   }
 
+  // ignore: unused_element
   Future<void> _onRefresh() async {
     dtArray.clear();
     count = 0;
 
     getdataFromAPIwDIO();
 
-    return Future.delayed(Duration(seconds: 1));
+    return Future.delayed(const Duration(seconds: 1));
   }
 
   @override
@@ -142,77 +133,85 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
     // ignore: unused_local_variable
     var wScreen = MediaQuery.of(context).size.width;
 
-    // listpicname.clear();
-    // selectedPIC = 'All';
-    // getdataPICDownline();
-
-    // print('masuk');
-
-    if (dtArray.isEmpty && count == 0) {
-      setState(() {
-        getdataFromAPIwDIO();
-      });
-    }
-    return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.all(5),
-      child: Column(
-        children: [
-          Container(
-            // height: 30,
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                Text(
-                  'Todo List Downline',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                Spacer(),
-                Text(
-                  'Jumlah : ' + jumlahdata.toString(),
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+    return Column(
+      children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          color: Colors.blue[100],
+          height: 25,
+          child: Row(
+            children: const [
+              Text(
+                'Todo List Downline',
+                style: TextStyle(
+                    fontSize: 15,
+                    color: kPrimaryColor,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          height: 40,
+          alignment: Alignment.centerLeft,
+          // color: Colors.blue[100],
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(
+              bottom: BorderSide(
+                  color: Colors.grey, width: 1, style: BorderStyle.solid),
             ),
           ),
-          Container(
-            // height: 30,
-            alignment: Alignment.centerLeft,
-            // color: Colors.blue[100],
-            child: Row(
-              children: [
-                Text(
-                  'PIC : ',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                DropDownCategory(hScreen),
-              ],  
-            ),
+          child: Row(
+            children: [
+              const Text(
+                'PIC : ',
+                style: TextStyle(
+                    fontSize: 15,
+                    color: kPrimaryColor,
+                    fontWeight: FontWeight.bold),
+              ),
+              DropDownCategory(hScreen),
+              const Spacer(),
+              Text(
+                'Jumlah : ' + jumlahdata.toString() + ' To Do List',
+                style: const TextStyle(
+                    fontSize: 15,
+                    color: kPrimaryColor,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
-          dtArray.isEmpty && count == 0
-              ? CircularProgressIndicator()
-              : Container(
-                  width: wScreen * 0.98,
-                  margin: const EdgeInsets.only(top: 2),
-                  height: hScreen - 278,
-                  // color: Colors.green,
-                  child: RefreshIndicator(
-                    triggerMode: RefreshIndicatorTriggerMode.onEdge,
-                    onRefresh: _onRefresh,
-                    child: viewDataToDOList(hScreen, wScreen, context),
-                  ),
+        ),
+        dtArray.isEmpty && count == 0
+            ? const CircularProgressIndicator()
+            : Container(
+                width: wScreen * 0.98,
+                margin: const EdgeInsets.only(top: 2),
+                height: hScreen - 278,
+                // color: Colors.green,
+                child: RefreshIndicator(
+                  triggerMode: RefreshIndicatorTriggerMode.onEdge,
+                  onRefresh: _onRefresh,
+                  child: viewDataToDOList(hScreen, wScreen, context),
                 ),
-        ],
-      ),
+              ),
+      ],
+    );
+  }
+
+  DropdownButton<String> DropDownCategory(double hScreen) {
+    return DropdownButton(
+      // menuMaxHeight: hScreen * 0.3,
+      value: selectedPIC,
+      hint: const Text('Pilih PIC'),
+      onChanged: (selectedValue) {
+        setState(() {
+          selectedPIC = selectedValue.toString();
+          getdataFromAPIwDIO();
+        });
+      },
+      items: _listpic,
     );
   }
 
@@ -230,22 +229,6 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
             )
             .toList(),
       ),
-    );
-  }
-
-  // ignore: non_constant_identifier_names
-  DropdownButton<String> DropDownCategory(double hScreen) {
-    return DropdownButton(
-      // menuMaxHeight: hScreen * 0.3,
-      value: selectedPIC,
-      hint: Text('Pilih PIC'),
-      onChanged: (selectedValue) {
-        setState(() {
-          selectedPIC = selectedValue.toString();
-          getdataFromAPIwDIO();
-        });
-      },
-      items: _listpic,
     );
   }
 
@@ -279,7 +262,7 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
         margin: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
         decoration: BoxDecoration(
           color: Colors.grey[50],
-          border: Border(
+          border: const Border(
             bottom: BorderSide(
                 color: Colors.grey, width: 1, style: BorderStyle.solid),
           ),
@@ -297,15 +280,15 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
                     padding: const EdgeInsets.only(left: 5),
                     width: MediaQuery.of(context).size.width * 0.85,
                     // color: Colors.blue,
-                    child: new SingleChildScrollView(
+                    child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Text(
                         e.deskripsi_topik,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
                     height: 15,
                     width: 15,
@@ -314,7 +297,7 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.white,
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           spreadRadius: 1,
                           color: Colors.grey,
@@ -324,7 +307,7 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
                     ),
                     child: Text(e.follow_up),
                   ),
-                  SizedBox(width: 5),
+                  const SizedBox(width: 5),
                 ],
               ),
             ),
@@ -333,7 +316,7 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
               width: double.infinity,
               // color: Colors.grey[50],
               margin: const EdgeInsets.only(left: 5),
-              child: new SingleChildScrollView(
+              child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Row(
                     children: [
@@ -342,7 +325,7 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
                         alignment: Alignment.centerLeft,
                         child: Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.watch_later_outlined,
                               size: 17,
                             ),
@@ -356,13 +339,14 @@ class _WidgetToDoListDownlineState extends State<WidgetToDoListDownline> {
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text('  '),
-                            Icon(
+                            const Text('  '),
+                            const Icon(
                               Icons.people_alt_outlined,
                               size: 17,
                             ),
                             Text(' ' + e.nama_lengkap,
-                                style: TextStyle(color: Colors.blueAccent)),
+                                style:
+                                    const TextStyle(color: Colors.blueAccent)),
                           ],
                         ),
                       ),

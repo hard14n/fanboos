@@ -1,13 +1,15 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names, avoid_unnecessary_containers, sized_box_for_whitespace, constant_identifier_names, unnecessary_new, unused_import, avoid_print
 
-import 'package:fanboos/Controller/Tab/General/WidgetToDoList.dart';
+// ignore_for_file: constant_identifier_names
+
+// import 'package:fanboos/Controller/Tab/General/WidgetToDoList.dart';
+import 'package:fanboos/Controller/ToDoList/TodoList.dart';
 import 'package:fanboos/Controller/login_page.dart';
-import 'package:fanboos/Controller/mainpage/Informasi.dart';
+// import 'package:fanboos/Controller/mainpage/Informasi.dart';
 // import 'package:fanboos/Controller/mainpage/alertScreen.dart';
 import 'package:fanboos/Controller/mainpage/berita.dart';
-import 'package:fanboos/Controller/mainpage/drawerEndScreen.dart';
-import 'package:fanboos/Controller/mainpage/drawerScreen.dart';
-import 'package:fanboos/Controller/mainpage/homeScreen.dart';
+// import 'package:fanboos/Controller/mainpage/drawerEndScreen.dart';
+// import 'package:fanboos/Controller/mainpage/drawerScreen.dart';
+// import 'package:fanboos/Controller/mainpage/homeScreen.dart';
 import 'package:fanboos/Controller/mainpage/home_screen.dart';
 import 'package:fanboos/Controller/mainpage/profile.dart';
 import 'package:fanboos/Model/constants.dart';
@@ -31,9 +33,9 @@ class _MenuUtamaState extends State<MenuUtama> {
   int _selectorIndex = currenttab;
   // ignore: unused_field
   final List<Widget> _widgetOption = [
-    Home_Screen(),
-    BeritaScreen(),
-    Widget2DoList(),
+    const Home_Screen(),
+    const BeritaScreen(),
+    const ToDoList(),
     ProfileScreen()
   ];
 
@@ -59,18 +61,18 @@ class _MenuUtamaState extends State<MenuUtama> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
-        '/menu_utama': (BuildContext context) => new MenuUtama(),
-        '/loginpage': (BuildContext context) => new LoginPage(),
+        '/menu_utama': (BuildContext context) => const MenuUtama(),
+        '/loginpage': (BuildContext context) => const LoginPage(),
       },
       home: Scaffold(
         // drawer: DrawerScreen(),
         // endDrawer: InfoScreen(),
         appBar: AppBar(
           centerTitle: true,
-          title: Text(companyName),
+          title: const Text(companyName),
           backgroundColor: kPrimaryColor,
           elevation: 0,
-          toolbarHeight: 50,
+          toolbarHeight: mytoolbarHeight,
           // titleSpacing: 20,
         ),
         body: Consumer<ConnectivityProvider>(builder: (context, model, child) {
@@ -81,10 +83,8 @@ class _MenuUtamaState extends State<MenuUtama> {
                 ? _widgetOption.elementAt(_selectorIndex)
                 : NoInternet();
           }
-          return Container(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
+          return const Center(
+            child: CircularProgressIndicator(),
           );
         }),
         bottomNavigationBar: navBarBottom(),
@@ -106,10 +106,11 @@ class _MenuUtamaState extends State<MenuUtama> {
           selectedItemColor: kPrimaryColor,
           unselectedItemColor: Colors.black54,
           selectedLabelStyle:
-              TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+              const TextStyle(
+              color: kPrimaryColor, fontWeight: FontWeight.bold),
           // unselectedLabelStyle: TextStyle(color: Colors.black54),
           showUnselectedLabels: true,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 // ignore: deprecated_member_use

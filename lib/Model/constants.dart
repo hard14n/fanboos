@@ -39,7 +39,7 @@ String categoryAsset = '';
 int invalidTokenStatusCode = 401;
 
 int currenttab = 0;
-
+double mytoolbarHeight = 50;
 // ignore: non_constant_identifier_names
 bool loading_Form = false;
 
@@ -47,24 +47,6 @@ var categoryDiRubah = false;
 bool statusfromdetail = false;
 
 String alamaturl = "http://api.fabindo.com/";
-
-// Future<Response> getdataFromAPI(String myCompany, String myCategory) async {
-//   Dio _dio = Dio();
-
-//   String _url = alamaturl +
-//       "/w_sales_trend/?company=" +
-//       myCompany +
-//       '&category=' +
-//       myCategory;
-
-//   Response response = await _dio.get(_url,
-//       options: Options(headers: {
-//         'Authorization': 'Bearer $mytoken',
-//         'User-Agent': 'flutter-format',
-//       }));
-
-//   return response;
-// }
 
 String getNamaBulan(int mon) {
   String bulan = '';
@@ -108,7 +90,7 @@ Color getColors(String dueDate) {
   return barColor;
 }
 
-  showAlert(BuildContext context, String mytitle, String msg) {
+showAlert(BuildContext context, String mytitle, String msg) {
   return showDialog(
       context: context,
       builder: (context) {
