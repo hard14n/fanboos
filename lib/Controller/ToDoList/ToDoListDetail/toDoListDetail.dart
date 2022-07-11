@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:fanboos/Controller/Tab/General/ToDoPribadi/Model/FollowUpModel.dart';
+import 'package:fanboos/Controller/ToDoList/Model/FollowUpModel.dart';
 import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -795,9 +795,9 @@ class _ToDoListDetailState extends State<ToDoListDetail> {
                                                         : 0;
                                               });
                                               Navigator.pop(context, true);
-                                              Navigator.pushReplacementNamed(
-                                                  context, "/menu_utama",
-                                                  arguments: mytoken);
+                                              // Navigator.pushReplacementNamed(
+                                              //     context, "/menu_utama",
+                                              //     arguments: mytoken);
                                             },
                                             child: const Text('Yes'),
                                           )

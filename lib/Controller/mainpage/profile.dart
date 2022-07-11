@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, file_names, avoid_unnecessary_containers, non_constant_identifier_names
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, file_names, avoid_unnecessary_containers, non_constant_identifier_names, deprecated_member_use
 
 import 'package:fanboos/Model/constants.dart';
 import 'package:flutter/material.dart';
@@ -147,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           Container(
             decoration: const BoxDecoration(
-              color: kPrimaryColor,
+              color: Colors.white,
               border: Border(
                 bottom: BorderSide(
                     color: Colors.grey, width: 1, style: BorderStyle.solid),
@@ -160,18 +160,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
             // margin: EdgeInsets.all(2),
             child: Column(
               children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.pushReplacementNamed(context, "/loginpage");
-                    // Navigator.pushReplacementNamed(context, "/");
-                  },
-                  child: Text(
-                    'Logout',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
+                // InkWell(
+                //   onTap: () {
+                //     Navigator.pushReplacementNamed(context, "/loginpage");
+                //     // Navigator.pushReplacementNamed(context, "/");
+                //   },
+                //   child: Text(
+                //     'Logout',
+                //     style: TextStyle(
+                //         fontWeight: FontWeight.bold, color: Colors.white),
+                //   ),
+                // ),
+
+                ButtonTheme(
+                  minWidth: wScreen - 200,
+                  child: RaisedButton(
+                    child: Text('Logout'),
+                    textColor: Colors.white,
+                    color: kPrimaryButtonColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(16.0),
+                      ),
+                    ),
+                    onPressed: () {
+                      // print('Masuk');
+                      Navigator.pushReplacementNamed(context, "/loginpage");
+                    },
                   ),
                 ),
-                
               ],
             ),
           ),

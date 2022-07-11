@@ -399,7 +399,7 @@ class _LoginPageState extends State<LoginPage> {
       var dataResult = json.decode(response.body);
 
       Map<String, dynamic> map = dataResult;
-      print(map);
+      // print(map);
       if (map['respon'] == 0) {
         showAlert(context, "Err MESSAGE", "Login Fail");
         exit(context);
@@ -418,7 +418,7 @@ class _LoginPageState extends State<LoginPage> {
 
           mytoken = map['token'];
 
-          print(mytoken);
+          // print(mytoken);
 
           formActive = '2DOPribadi';
 
